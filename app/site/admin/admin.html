@@ -76,60 +76,17 @@
               <tr ng-repeat="agent in agents" >
                 <td>{{agent.nick}} </td>
                 <td>{{agent.points}} </td>
-                <td>Butten here</td>
+                <td>
+                  <select ng-model="agent.type" ng-change="updateType(agent.id,agent.type)" class="form-control">
+                    <option value="1">Human</option>
+                    <option value="2">Colaborator</option>
+                    <option value="3">Admin</option>                      
+                  </select>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
-
-        <!-- TABS DEFINITION -->
-        <ul class="nav nav-pills nav-justified">
-          <li class="active"><a href="#complete" data-toggle="pill">Completed</a></li>
-          <li><a href="#incompleted" data-toggle="pill">Incompleted</a></li>          
-        </ul>
-
-
-        <!-- Tab panes -->
-        <div class="tab-content" ng-controller="MissionController">
-          <div class="tab-pane active" id="complete">
-
-            <br />
-
-            <!-- DISPLAY MISSIONS -->        
-            <div id="missionList" ng-repeat="mission in missionsCompleted">
-              <div class="panel panel-success">
-                <div class="panel-heading">
-                   <h3 class="panel-title">{{mission.name}}</h3>
-                </div>
-                <div class="panel-body">
-                 {{mission.description}}
-                </div>
-              </div>                       
-            </div>
-
-          </div>
-
-          <div class="tab-pane" id="incompleted">
-          <br />
-
-            <!-- DISPLAY MISSIONS -->        
-            <div id="missionList" ng-repeat="mission in missionsIncompleted">
-              <div class="panel panel-success">
-                <div class="panel-heading">
-                   <h3 class="panel-title">{{mission.name}}</h3>
-                </div>
-                <div class="panel-body">
-                 {{mission.description}}
-                </div>
-              </div>                       
-            </div>
-
-          </div>    
-
-        </div>
-
-        
-
     </div> 
 
 

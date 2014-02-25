@@ -3,32 +3,22 @@
 missionEnlightened.controller('AgentController',
 	function AgentController($scope, $firebase){
 
+		$scope.agentTypes = [ {name:"Human",value:1},
+							  {name:"Colaborator",value:2},
+							  {name:"Admin", value:3}];
+					
+
 		var ref = new Firebase("https://dazzling-fire-345.firebaseio.com/agents");
 		$scope.agents = $firebase(ref);
 
 		
-		//Save Function
-		$scope.save = function(mission,newMissionForm){
+		/*$scope.$watchCollection('agents', function(newNames, oldNames) {
+            console.log(newNames);
+            console.log(oldNames);
+        });*/
 
-		/*	if(newMissionForm.$valid)
-			{
-				if(_.isUndefined(mission.portalurl)){
-					mission.portalurl = "";
-				}
-
-				var data = {name: mission.name, description: mission.description, difficulty: mission.difficulty, portalurl: mission.portalurl, completed:"false", completedbyagent:null};
-				
-				// generate a unique id based on timestamp
-				var id = ref.push().name(); 
-				// put id into the data
-				data.id = id;
-				ref.child(id).set(data);
-
-				//$scope.missions.$add();
-				//$scope.newMissionForm.$setPristine();
-
-				$scope.mission = null;
-			}*/
+		$scope.updateType = function(agent,type){
+			ref.child(agent).update({type: type});
 		};
 	}
 );
