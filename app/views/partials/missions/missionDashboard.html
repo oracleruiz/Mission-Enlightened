@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Finish a Mission</strong></div>
+        <div class="panel-body">
+
+            <div id="finishMissionFormDiv">          
+                <form name="finishMissionForm" role="form" class="form-horizontal"> 
+
+                    <div class="form-group" >
+                        <label for="missionName" class="col-sm-2 control-label" >Mission:</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" ng-model="finishForm.missionID" >
+                                <option ng-repeat="mission in missionsIncompleted"  value="{{mission.id}}">{{mission.name}}</option>                      
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-controller="AgentController">
+                        <label for="missionDescription" class="col-sm-2 control-label">Agent:</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" ng-model="finishForm.agent" >
+                                <option ng-repeat="agent in agents"  value="{{agent.nick}}">{{agent.nick}}</option>   
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <br />
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" ng-disabled="finishMissionForm.$invalid" ng-click="finishMission(finishForm, finishMissionForm)" class="btn btn-success btn-lg btn-block">Finish</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+        <!-- TABS DEFINITION -->
+        <ul class="nav nav-pills nav-justified">
+            <li class="active"><a href="#complete" data-toggle="pill">Completed</a></li>
+            <li><a href="#incompleted" data-toggle="pill">Incompleted</a></li>          
+        </ul>
+
+
+        <!-- Tab panes -->
+        <div class="tab-content" ng-controller="MissionController">
+            <div class="tab-pane active" id="complete">
+
+                <br />
+
+                <!-- DISPLAY MISSIONS -->        
+                <div id="missionList" ng-repeat="mission in missionsCompleted">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{mission.name}}</h3>
+                        </div>
+                        <div class="panel-body">
+                            {{mission.description}}
+                        </div>
+                    </div>                       
+                </div>
+
+            </div>
+
+            <div class="tab-pane" id="incompleted">
+                <br />
+
+                <!-- DISPLAY MISSIONS -->        
+                <div id="missionList" ng-repeat="mission in missionsIncompleted">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{mission.name}}</h3>
+                        </div>
+                        <div class="panel-body">
+                            {{mission.description}}
+                        </div>
+                    </div>                       
+                </div>
+
+            </div>    
+
+        </div>
+
+    </div> 
+</div>

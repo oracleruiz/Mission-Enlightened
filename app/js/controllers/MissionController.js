@@ -70,7 +70,7 @@ missionEnlightened.controller('MissionController',
             };
 
             //Initial functions
-
+            
             //$scope.missions.$on('loaded', $scope.listMissionsStatus);
             $scope.missions.$on('child_changed', $scope.listMissionsStatus);
             $scope.listMissionsStatus();
